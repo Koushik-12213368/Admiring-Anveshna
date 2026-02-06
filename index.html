@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Anveshna 💕</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e84a6f'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Unlock celebration (hearts burst) -->
+  <div id="unlock-celebration" class="unlock-celebration" aria-hidden="true"></div>
+
+  <!-- Lock & Key Login Screen -->
+  <section id="login-screen" class="screen active">
+    <div class="lock-bg" id="lock-bg">
+      <div class="keyhole-glow"></div>
+      <div class="lock-container">
+        <div class="lock-body" id="lock-body">
+          <div class="lock-shackle" id="lock-shackle"></div>
+          <div class="keyhole">
+            <div class="keyhole-inner"></div>
+          </div>
+        </div>
+        <p class="lock-label">Unlock your surprise</p>
+        <p class="password-hint">Hint: Four letters — what this week is all about 💕</p>
+        <form id="login-form" class="login-form">
+          <input type="password" id="password" placeholder="Enter the key..." autocomplete="off" maxlength="20">
+          <button type="submit" class="key-btn" aria-label="Unlock">
+            <span class="key-icon">🔑</span>
+            Unlock
+          </button>
+        </form>
+        <p id="login-error" class="login-error" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main App (visible after login) -->
+  <section id="app-screen" class="screen">
+    <div id="floating-hearts" class="floating-hearts" aria-hidden="true"></div>
+    <header class="app-header">
+      <div id="admin-day-picker" class="admin-day-picker" hidden></div>
+      <span id="day-badge" class="day-badge"></span>
+      <div id="timer" class="timer"></div>
+    </header>
+
+    <main id="day-content" class="day-content">
+      <div id="day-message" class="day-message"></div>
+      <div id="day-video-wrap" class="day-video-wrap" hidden>
+        <button type="button" id="rose-click-me" class="rose-click-me" aria-label="Reveal surprise">Click me 💕</button>
+        <video id="day-video" class="day-video" controls playsinline preload="metadata" hidden></video>
+      </div>
+      <div id="day-visual" class="day-visual"></div>
+      <p id="day-note" class="day-note" style="display: none;"></p>
+    </main>
+  <!-- Popup music per day -->
+  <audio id="rose-popup-music" preload="metadata" loop>
+    <source src="songs/holodr3ams-glass-roses-467358.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="propose-popup-music" preload="metadata" loop>
+    <source src="songs/kreasikoe_bruno-mars-just-the-way-you-are-mp3.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="chocolate-popup-music" preload="metadata" loop>
+    <source src="songs/Edsheeran_-_thinking_out_loud_(mp3.pm).mp3" type="audio/mpeg">
+  </audio>
+  <audio id="teddy-popup-music" preload="metadata" loop>
+    <source src="songs/Elvis_-_Teddy_bear_(mp3.pm).mp3" type="audio/mpeg">
+  </audio>
+
+    <footer class="app-footer">
+      <p id="footer-note" class="footer-note"></p>
+      <p class="made-with-love">Made with love for Anveshna 💕</p>
+    </footer>
+  </section>
+
+  <!-- Daily popup overlay (rose, chocolate, etc.) -->
+  <div id="daily-popup" class="daily-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title" hidden>
+    <div class="popup-backdrop"></div>
+    <div class="popup-card">
+      <button type="button" class="popup-close" id="popup-close" aria-label="Close">×</button>
+      <h2 id="popup-title" class="popup-title"></h2>
+      <div id="popup-visual" class="popup-visual"></div>
+      <p id="popup-subtitle" class="popup-subtitle"></p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
