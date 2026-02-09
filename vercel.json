@@ -1,0 +1,11 @@
+{
+  "headers": [
+    {
+      "source": "/Packages/(.*)",
+      "headers": [
+        { "key": "Accept-Ranges", "value": "bytes" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000" }
+      ]
+    }
+  ]
+}

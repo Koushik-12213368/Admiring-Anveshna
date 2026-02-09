@@ -261,7 +261,7 @@
         if (videoWrap) videoWrap.removeAttribute('hidden');
         if (visual) { visual.textContent = ''; visual.style.display = 'none'; visual.classList.remove('click-burst'); }
         if (dayVideo) {
-          dayVideo.src = DAY_VIDEOS[forceDayKey];
+          dayVideo.src = encodeURI(DAY_VIDEOS[forceDayKey]);
           if (clickMe) clickMe.removeAttribute('hidden');
           dayVideo.setAttribute('hidden', '');
           dayVideo.load();
@@ -310,7 +310,7 @@
       if (videoWrap) videoWrap.removeAttribute('hidden');
       if (visual) { visual.textContent = ''; visual.style.display = 'none'; visual.classList.remove('click-burst'); }
       if (dayVideo) {
-        dayVideo.src = DAY_VIDEOS[state.dayKey];
+        dayVideo.src = encodeURI(DAY_VIDEOS[state.dayKey]);
         if (clickMe) clickMe.removeAttribute('hidden');
         dayVideo.setAttribute('hidden', '');
         dayVideo.load();
