@@ -27,7 +27,8 @@
     rose: 'Packages/WhatsApp Video 2026-02-06 at 1.22.15 AM.mp4',
     propose: 'Packages/WhatsApp Video 2026-02-06 at 3.56.11 PM.mp4',
     chocolate: 'Packages/WhatsApp Video 2026-02-08 at 1.02.19 AM.mp4',
-    teddy: 'Packages/WhatsApp Video 2026-02-08 at 12.47.19 AM.mp4'
+    teddy: 'Packages/WhatsApp Video 2026-02-08 at 12.47.19 AM.mp4',
+    promise: 'Packages/WhatsApp Video 2026-02-10 at 1.08.56 AM.mp4'
   };
 
   // All dates and times use Philadelphia (America/New_York)
