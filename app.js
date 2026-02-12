@@ -350,7 +350,7 @@
     if (subtitle) subtitle.textContent = day.label;
     popup.removeAttribute('hidden');
 
-    var dayMusicIds = { rose: 'rose-popup-music', propose: 'propose-popup-music', chocolate: 'chocolate-popup-music', teddy: 'teddy-popup-music', promise: 'promise-popup-music', hug: 'hug-popup-music' };
+    var dayMusicIds = { rose: 'rose-popup-music', propose: 'propose-popup-music', chocolate: 'chocolate-popup-music', teddy: 'teddy-popup-music', promise: 'promise-popup-music', hug: 'hug-popup-music', kiss: 'kiss-popup-music' };
     var musicId = dayMusicIds[dayKey];
     if (musicId) {
       var el = document.getElementById(musicId);
@@ -361,7 +361,7 @@
   function closeDailyPopup() {
     var popup = document.getElementById('daily-popup');
     if (popup) popup.setAttribute('hidden', '');
-    ['rose-popup-music', 'propose-popup-music', 'chocolate-popup-music', 'teddy-popup-music', 'promise-popup-music', 'hug-popup-music'].forEach(function (id) {
+    ['rose-popup-music', 'propose-popup-music', 'chocolate-popup-music', 'teddy-popup-music', 'promise-popup-music', 'hug-popup-music', 'kiss-popup-music'].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) el.pause();
     });
