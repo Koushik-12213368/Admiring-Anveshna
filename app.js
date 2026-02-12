@@ -29,7 +29,8 @@
     chocolate: 'Packages/WhatsApp Video 2026-02-08 at 1.02.19 AM.mp4',
     teddy: 'Packages/WhatsApp Video 2026-02-08 at 12.47.19 AM.mp4',
     promise: 'Packages/WhatsApp Video 2026-02-10 at 1.08.56 AM.mp4',
-    hug: 'Packages/WhatsApp Video 2026-02-11 at 9.53.33 PM.mp4'
+    hug: 'Packages/WhatsApp Video 2026-02-11 at 9.53.33 PM.mp4',
+    kiss: 'Packages/WhatsApp Video 2026-02-12 at 11.37.28 PM.mp4'
   };
 
   // All dates and times use Philadelphia (America/New_York)
