@@ -30,7 +30,8 @@
     teddy: 'Packages/WhatsApp Video 2026-02-08 at 12.47.19 AM.mp4',
     promise: 'Packages/WhatsApp Video 2026-02-10 at 1.08.56 AM.mp4',
     hug: 'Packages/WhatsApp Video 2026-02-11 at 9.53.33 PM.mp4',
-    kiss: 'Packages/WhatsApp Video 2026-02-12 at 11.37.28 PM.mp4'
+    kiss: 'Packages/WhatsApp Video 2026-02-12 at 11.37.28 PM.mp4',
+    valentine: 'Packages/WhatsApp Video 2026-02-14 at 12.21.05 AM.mp4'
   };
 
   // All dates and times use Philadelphia (America/New_York)
@@ -394,8 +395,9 @@
   function startFloatingHearts(dayKey) {
     var container = document.getElementById('floating-hearts');
     if (!container || container.children.length > 0) return;
-    var symbols = dayKey === 'rose' ? ['🌹', '🌸', '🌷'] : ['❤', '💕', '💗'];
-    for (var i = 0; i < 12; i++) {
+    var symbols = dayKey === 'rose' ? ['🌹', '🌸', '🌷'] : (dayKey === 'valentine' ? ['❤', '💕', '💗', '💖', '❤️'] : ['❤', '💕', '💗']);
+    var count = dayKey === 'valentine' ? 18 : 12;
+    for (var i = 0; i < count; i++) {
       var el = document.createElement('span');
       el.className = 'heart';
       el.textContent = symbols[i % symbols.length];
