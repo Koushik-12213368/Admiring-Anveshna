@@ -347,11 +347,14 @@
     visual.textContent = day.emoji;
     visual.className = 'popup-visual';
     var card = popup.querySelector('.popup-card');
-    if (card) card.classList.toggle('rose-popup', dayKey === 'rose');
+    if (card) {
+      card.classList.toggle('rose-popup', dayKey === 'rose');
+      card.classList.toggle('valentine-popup', dayKey === 'valentine');
+    }
     if (subtitle) subtitle.textContent = day.label;
     popup.removeAttribute('hidden');
 
-    var dayMusicIds = { rose: 'rose-popup-music', propose: 'propose-popup-music', chocolate: 'chocolate-popup-music', teddy: 'teddy-popup-music', promise: 'promise-popup-music', hug: 'hug-popup-music', kiss: 'kiss-popup-music' };
+    var dayMusicIds = { rose: 'rose-popup-music', propose: 'propose-popup-music', chocolate: 'chocolate-popup-music', teddy: 'teddy-popup-music', promise: 'promise-popup-music', hug: 'hug-popup-music', kiss: 'kiss-popup-music', valentine: 'valentine-popup-music' };
     var musicId = dayMusicIds[dayKey];
     if (musicId) {
       var el = document.getElementById(musicId);
@@ -362,7 +365,7 @@
   function closeDailyPopup() {
     var popup = document.getElementById('daily-popup');
     if (popup) popup.setAttribute('hidden', '');
-    ['rose-popup-music', 'propose-popup-music', 'chocolate-popup-music', 'teddy-popup-music', 'promise-popup-music', 'hug-popup-music', 'kiss-popup-music'].forEach(function (id) {
+    ['rose-popup-music', 'propose-popup-music', 'chocolate-popup-music', 'teddy-popup-music', 'promise-popup-music', 'hug-popup-music', 'kiss-popup-music', 'valentine-popup-music'].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) el.pause();
     });
