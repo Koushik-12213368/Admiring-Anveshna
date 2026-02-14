@@ -271,6 +271,17 @@
     if (content) content.removeAttribute('hidden');
     if (calendarView) calendarView.setAttribute('hidden', '');
 
+    // Admin: show Memory Lane (calendar) anytime
+    if (forceDayKey === 'memorylane') {
+      app.removeAttribute('data-day');
+      if (content) content.setAttribute('hidden', '');
+      if (calendarView) calendarView.removeAttribute('hidden');
+      if (badge) badge.textContent = 'Memory Lane';
+      if (footer) footer.textContent = 'February 7–15 · Pick a date to watch';
+      showCalendarView(state);
+      return;
+    }
+
     // Admin: force showing a specific day
     if (forceDayKey && VALENTINE_WEEK[forceDayKey]) {
       var day = VALENTINE_WEEK[forceDayKey];
@@ -452,6 +463,17 @@
       });
       wrap.appendChild(btn);
     });
+    var memoryBtn = document.createElement('button');
+    memoryBtn.type = 'button';
+    memoryBtn.className = 'admin-memory-lane-btn';
+    memoryBtn.textContent = '📅 Memory Lane — calendar & videos';
+    memoryBtn.classList.toggle('active', selectedKey === 'memorylane');
+    memoryBtn.addEventListener('click', function () {
+      wrap.querySelectorAll('button').forEach(function (b) { b.classList.remove('active'); });
+      memoryBtn.classList.add('active');
+      onSelect('memorylane');
+    });
+    wrap.appendChild(memoryBtn);
   }
 
   function startFloatingHearts(dayKey) {

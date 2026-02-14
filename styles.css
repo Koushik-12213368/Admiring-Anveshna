@@ -365,6 +365,23 @@ body {
   border-color: var(--accent-rose);
 }
 
+/* Memory Lane = calendar view (admin only); full width so it’s visible */
+.admin-day-picker .admin-memory-lane-btn {
+  flex: 1 1 100%;
+  margin-top: 0.35rem;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  background: rgba(212, 168, 83, 0.25);
+  border-color: var(--accent-gold);
+}
+.admin-day-picker .admin-memory-lane-btn:hover {
+  background: rgba(212, 168, 83, 0.4);
+}
+.admin-day-picker .admin-memory-lane-btn.active {
+  background: rgba(212, 168, 83, 0.45);
+  border-color: var(--accent-gold);
+}
+
 .day-badge {
   display: inline-block;
   padding: 0.4rem 1rem;
