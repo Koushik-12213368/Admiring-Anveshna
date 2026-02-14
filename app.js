@@ -362,8 +362,10 @@
     var tomorrowText = nextDayKey ? 'Tomorrow: ' + VALENTINE_WEEK[nextDayKey].label + ' ' + VALENTINE_WEEK[nextDayKey].emoji : '';
     if (footer) footer.textContent = "Day " + day.date + " of Valentine's Week" + (tomorrowText ? " · " + tomorrowText : '');
 
-    if (riddleEl && nextDayKey) {
-      riddleEl.textContent = "When today becomes yesterday, the next door opens. Come back when the clock has turned. 🌙→☀️";
+    if (riddleEl && (nextDayKey || state.dayKey === 'valentine')) {
+      riddleEl.textContent = nextDayKey
+        ? "When today becomes yesterday, the next door opens. Come back when the clock has turned. 🌙→☀️"
+        : "When 14 becomes yesterday, one more door opens. Come back when the calendar flips. 🌙→☀️";
       riddleEl.removeAttribute('hidden');
     }
   }
