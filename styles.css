@@ -496,6 +496,16 @@ body {
   color: var(--text-muted);
 }
 
+.tomorrow-riddle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 0.5rem;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ===== Memory Lane (calendar after Valentine's Day) ===== */
 .calendar-view {
   width: 100%;

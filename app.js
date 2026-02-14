@@ -267,9 +267,11 @@
 
     var clickMe = document.getElementById('rose-click-me');
 
-    // Default: show day-content, hide calendar
+    // Default: show day-content, hide calendar, hide tomorrow riddle
     if (content) content.removeAttribute('hidden');
     if (calendarView) calendarView.setAttribute('hidden', '');
+    var riddleEl = document.getElementById('tomorrow-riddle');
+    if (riddleEl) riddleEl.setAttribute('hidden', '');
 
     // Admin: show Memory Lane (calendar) anytime
     if (forceDayKey === 'memorylane') {
@@ -359,6 +361,11 @@
     var nextDayKey = DAY_KEYS[DAY_KEYS.indexOf(state.dayKey) + 1];
     var tomorrowText = nextDayKey ? 'Tomorrow: ' + VALENTINE_WEEK[nextDayKey].label + ' ' + VALENTINE_WEEK[nextDayKey].emoji : '';
     if (footer) footer.textContent = "Day " + day.date + " of Valentine's Week" + (tomorrowText ? " · " + tomorrowText : '');
+
+    if (riddleEl && nextDayKey) {
+      riddleEl.textContent = "When today becomes yesterday, the next door opens. Come back when the clock has turned. 🌙→☀️";
+      riddleEl.removeAttribute('hidden');
+    }
   }
 
   function showCalendarView(state) {
