@@ -58,6 +58,18 @@
       <div id="day-visual" class="day-visual"></div>
       <p id="day-note" class="day-note" style="display: none;"></p>
     </main>
+
+    <!-- Memory Lane: calendar view (shown after Valentine's Day) -->
+    <div id="calendar-view" class="calendar-view" hidden>
+      <h2 class="calendar-title">Memory Lane</h2>
+      <p class="calendar-subtitle">Pick a date to watch your video</p>
+      <div id="calendar-dates" class="calendar-dates"></div>
+      <div id="calendar-player-wrap" class="calendar-player-wrap">
+        <p id="calendar-selected-label" class="calendar-selected-label"></p>
+        <video id="calendar-video" class="calendar-video" controls playsinline preload="metadata"></video>
+      </div>
+    </div>
+
   <!-- Popup music per day -->
   <audio id="rose-popup-music" preload="metadata" loop>
     <source src="songs/holodr3ams-glass-roses-467358.mp3" type="audio/mpeg">

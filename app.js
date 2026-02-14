@@ -34,6 +34,19 @@
     valentine: 'Packages/WhatsApp Video 2026-02-14 at 12.21.05 AM.mp4'
   };
 
+  // Calendar: Feb 7–15 for Memory Lane (past, present, future videos)
+  const CALENDAR_DATES = [
+    { date: 7,  label: 'Rose Day',      video: DAY_VIDEOS.rose,      greeting: 'Happy Rose Day Anveshna' },
+    { date: 8,  label: 'Propose Day',   video: DAY_VIDEOS.propose,    greeting: 'Happy Propose Day Anveshna' },
+    { date: 9,  label: 'Chocolate Day', video: DAY_VIDEOS.chocolate,  greeting: 'Happy Chocolate Day Anveshna' },
+    { date: 10, label: 'Teddy Day',     video: DAY_VIDEOS.teddy,     greeting: 'Happy Teddy Day Anveshna' },
+    { date: 11, label: 'Promise Day',  video: DAY_VIDEOS.promise,   greeting: 'Happy Promise Day Anveshna' },
+    { date: 12, label: 'Hug Day',       video: DAY_VIDEOS.hug,       greeting: 'Happy Hug Day Anveshna' },
+    { date: 13, label: 'Kiss Day',      video: DAY_VIDEOS.kiss,      greeting: 'Happy Kiss Day Anveshna' },
+    { date: 14, label: "Valentine's Day", video: DAY_VIDEOS.valentine, greeting: "Happy Valentine's Day Anveshna" },
+    { date: 15, label: 'One More for You', video: 'Packages/WhatsApp Video 2026-02-15 at 12.36.50 AM.mp4', greeting: 'For you, always 💕' }
+  ];
+
   // All dates and times use Philadelphia (America/New_York)
   const TIMEZONE = 'America/New_York';
 
@@ -239,6 +252,7 @@
 
   function renderDayContent(state, forceDayKey) {
     var content = document.getElementById('day-content');
+    var calendarView = document.getElementById('calendar-view');
     var badge = document.getElementById('day-badge');
     var message = document.getElementById('day-message');
     var visual = document.getElementById('day-visual');
@@ -252,6 +266,10 @@
     var dayVideo = document.getElementById('day-video');
 
     var clickMe = document.getElementById('rose-click-me');
+
+    // Default: show day-content, hide calendar
+    if (content) content.removeAttribute('hidden');
+    if (calendarView) calendarView.setAttribute('hidden', '');
 
     // Admin: force showing a specific day
     if (forceDayKey && VALENTINE_WEEK[forceDayKey]) {
@@ -296,12 +314,11 @@
 
     if (state.status === 'after') {
       app.removeAttribute('data-day');
-      if (badge) badge.textContent = "Valentine's Week Over";
-      if (message) { message.textContent = "Thank you for every day, Anveshna. Until next year! 💕"; message.classList.remove('typewriting'); }
-      if (videoWrap) videoWrap.setAttribute('hidden', '');
-      if (visual) { visual.textContent = '💕'; visual.style.display = ''; visual.classList.remove('click-burst'); }
-      if (dayNoteEl) dayNoteEl.style.display = 'none';
-      if (footer) footer.textContent = "February 7–14";
+      if (content) content.setAttribute('hidden', '');
+      if (calendarView) calendarView.removeAttribute('hidden');
+      if (badge) badge.textContent = "Memory Lane";
+      if (footer) footer.textContent = "February 7–15 · Pick a date to watch";
+      showCalendarView(state);
       return;
     }
 
@@ -331,6 +348,48 @@
     var nextDayKey = DAY_KEYS[DAY_KEYS.indexOf(state.dayKey) + 1];
     var tomorrowText = nextDayKey ? 'Tomorrow: ' + VALENTINE_WEEK[nextDayKey].label + ' ' + VALENTINE_WEEK[nextDayKey].emoji : '';
     if (footer) footer.textContent = "Day " + day.date + " of Valentine's Week" + (tomorrowText ? " · " + tomorrowText : '');
+  }
+
+  function showCalendarView(state) {
+    var container = document.getElementById('calendar-dates');
+    var videoEl = document.getElementById('calendar-video');
+    var labelEl = document.getElementById('calendar-selected-label');
+    if (!container || !videoEl) return;
+
+    var today = getToday();
+    var isFebruary = today.month === 1;
+
+    container.innerHTML = '';
+    CALENDAR_DATES.forEach(function (entry) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'calendar-date-btn';
+      if (isFebruary) {
+        if (entry.date < today.date) btn.classList.add('calendar-date-past');
+        else if (entry.date === today.date) btn.classList.add('calendar-date-present');
+        else btn.classList.add('calendar-date-future');
+      } else {
+        btn.classList.add('calendar-date-past');
+      }
+      btn.textContent = 'Feb ' + entry.date + ' · ' + entry.label;
+      btn.setAttribute('data-date', String(entry.date));
+      btn.addEventListener('click', function () {
+        container.querySelectorAll('.calendar-date-btn').forEach(function (b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        labelEl.textContent = entry.greeting;
+        videoEl.src = encodeURI(entry.video);
+        videoEl.load();
+      });
+      container.appendChild(btn);
+    });
+
+    // Default: select Feb 15 (One More for You)
+    var defaultEntry = CALENDAR_DATES[CALENDAR_DATES.length - 1];
+    var defaultBtn = container.querySelector('[data-date="15"]');
+    if (defaultBtn) defaultBtn.classList.add('selected');
+    labelEl.textContent = defaultEntry.greeting;
+    videoEl.src = encodeURI(defaultEntry.video);
+    videoEl.load();
   }
 
   function openDailyPopup(state, forceDayKey) {
